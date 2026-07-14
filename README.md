@@ -2,7 +2,7 @@
 
 Terraform examples accompanying the blog series at [sregio.es](https://sregio.es/blog/).
 
-Terraform runs through Docker, with nothing installed on the machine: the Makefile wraps the official `hashicorp/terraform` image and mounts the current directory inside the container.
+Terraform runs through Docker, with nothing installed on the machine: the Makefiles wrap the official `hashicorp/terraform` image and mount the lab directory inside the container.
 
 ## Requirements
 
@@ -11,7 +11,10 @@ Terraform runs through Docker, with nothing installed on the machine: the Makefi
 
 ## Usage
 
+Each post in the series has its own lab under `labs/`. The shared logic lives in `terraform.mk` at the root, and each lab has a one-line Makefile that includes it, so you just cd into a lab and run make there:
+
 ```bash
+cd labs/02-remote-state
 make init      # download providers
 make plan      # show what would change
 make apply     # apply the changes
@@ -19,13 +22,13 @@ make destroy   # destroy what was created
 make help      # list all commands
 ```
 
-Each post in the series has its own lab under `labs/`. The Makefile targets the first lab by default; pick another one with the `LAB` variable:
+The root Makefile is a convenience wrapper that forwards any target to a lab (the first one by default):
 
 ```bash
-make plan LAB=labs/01-installing-terraform
+make plan LAB=labs/02-remote-state
 ```
 
-The Terraform version is pinned in the Makefile (`TF_VERSION`). It can be overridden without editing the file:
+The Terraform version is pinned in `terraform.mk` (`TF_VERSION`). It can be overridden without editing the file:
 
 ```bash
 make plan TF_VERSION=1.16
@@ -34,8 +37,10 @@ make plan TF_VERSION=1.16
 ## Labs
 
 1. [`labs/01-installing-terraform`](labs/01-installing-terraform) — a `local_file` resource to check the setup works.
+2. [`labs/02-remote-state`](labs/02-remote-state) — the same configuration with the state stored in a Google Cloud Storage bucket (`gcs` backend). Create the bucket first and replace the bucket name in `backend.tf` with your own; the container picks up your `gcloud` Application Default Credentials, so run `gcloud auth application-default login` once before `make init LAB=labs/02-remote-state`.
 
 ## Posts in the series
 
 1. [From snapshots to infrastructure as code](https://sregio.es/en/blog/de-snapshots-a-infraestructura-como-codigo/)
 2. [Installing Terraform: binary, apt and Docker (with a Makefile)](https://sregio.es/en/blog/instalar-terraform/)
+3. [Remote state in Terraform: a bucket, a lock, and no more stepping on each other](https://sregio.es/en/blog/terraform-state-remoto/)

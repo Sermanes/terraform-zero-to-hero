@@ -38,9 +38,11 @@ make plan TF_VERSION=1.16
 
 1. [`labs/01-installing-terraform`](labs/01-installing-terraform) — a `local_file` resource to check the setup works.
 2. [`labs/02-remote-state`](labs/02-remote-state) — the same configuration with the state stored in a Google Cloud Storage bucket (`gcs` backend). Create the bucket first and replace the bucket name in `backend.tf` with your own; the container picks up your `gcloud` Application Default Credentials, so run `gcloud auth application-default login` once before `make init LAB=labs/02-remote-state`.
+3. [`labs/03-providers`](labs/03-providers) — pinned `required_providers`/`required_version`, and a `google` provider used with an alias to create two buckets in different regions. Replace the project and bucket names with your own before running.
 
 ## Posts in the series
 
 1. [From snapshots to infrastructure as code](https://sregio.es/en/blog/de-snapshots-a-infraestructura-como-codigo/)
 2. [Installing Terraform: binary, apt and Docker (with a Makefile)](https://sregio.es/en/blog/instalar-terraform/)
 3. [Remote state in Terraform: a bucket, a lock, and no more stepping on each other](https://sregio.es/en/blog/terraform-state-remoto/)
+4. [What Terraform providers are and how to use them](https://sregio.es/en/blog/terraform-providers/)

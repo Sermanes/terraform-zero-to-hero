@@ -41,6 +41,7 @@ make plan TF_VERSION=1.16
 3. [`labs/03-providers`](labs/03-providers) — pinned `required_providers`/`required_version`, and a `google` provider used with an alias to create two buckets in different regions. Replace the project and bucket names with your own before running.
 4. [`labs/04-variables`](labs/04-variables) — same two buckets as lab 3, now parameterized with input variables. Ships `terraform.tfvars` and `prefix.auto.tfvars` to show variable definition precedence in action. Replace the project in `terraform.tfvars` with your own before running.
 5. [`labs/05-resource-attributes-outputs`](labs/05-resource-attributes-outputs) — same two buckets, plus a `google_storage_bucket_object` whose content references the backup bucket's `self_link` attribute, and an `outputs.tf` exposing bucket/object attributes. Set your own project (a local `terraform.tfvars` or `-var "project=..."`) before running.
+6. [`labs/06-terraform-commands`](labs/06-terraform-commands) — `local_file` and `random_pet` only, no cloud credentials needed. Used to exercise `validate`, `fmt`, `show`, `providers`, `output`, `refresh` and `graph`.
 
 ## Posts in the series
 
@@ -50,3 +51,4 @@ make plan TF_VERSION=1.16
 4. [What Terraform providers are and how to use them](https://sregio.es/en/blog/terraform-providers/)
 5. [How to declare variables in Terraform](https://sregio.es/en/blog/terraform-variables/)
 6. [Connecting resources in Terraform with attributes and outputs](https://sregio.es/en/blog/terraform-resource-attributes-outputs/)
+7. [Useful Terraform commands: validate, fmt, show, providers, output, refresh and graph](https://sregio.es/en/blog/terraform-commands/)

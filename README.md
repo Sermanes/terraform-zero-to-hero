@@ -43,6 +43,7 @@ make plan TF_VERSION=1.16
 5. [`labs/05-resource-attributes-outputs`](labs/05-resource-attributes-outputs) — same two buckets, plus a `google_storage_bucket_object` whose content references the backup bucket's `self_link` attribute, and an `outputs.tf` exposing bucket/object attributes. Set your own project (a local `terraform.tfvars` or `-var "project=..."`) before running.
 6. [`labs/06-terraform-commands`](labs/06-terraform-commands) — `local_file` and `random_pet` only, no cloud credentials needed. Used to exercise `validate`, `fmt`, `show`, `providers`, `output`, `refresh` and `graph`.
 7. [`labs/07-immutable-infra`](labs/07-immutable-infra) — same `local_file`/`random_pet` pair, used to exercise the `lifecycle` block: default destroy-and-create replacement, `create_before_destroy`, and `prevent_destroy`.
+8. [`labs/08-data-sources`](labs/08-data-sources) — a `data "local_file"` reading a file outside Terraform's control, a second data source whose path depends on `random_pet`'s id (deferred to apply), and a `null_resource` with `local-exec` used to show why an explicit `depends_on` is sometimes required on a data source.
 
 ## Posts in the series
 
@@ -54,3 +55,4 @@ make plan TF_VERSION=1.16
 6. [Connecting resources in Terraform with attributes and outputs](https://sregio.es/en/blog/terraform-resource-attributes-outputs/)
 7. [Useful Terraform commands: validate, fmt, show, providers, output, refresh and graph](https://sregio.es/en/blog/terraform-commands/)
 8. [Mutable vs. immutable infrastructure, and lifecycle in Terraform](https://sregio.es/en/blog/infraestructura-mutable-vs-inmutable/)
+9. [Data sources in Terraform](https://sregio.es/en/blog/terraform-data-sources/)

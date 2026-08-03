@@ -13,3 +13,4 @@ crash.log
 pets.txt
 notice.txt
 labs/08-data-sources/audit/
+labs/10-provisioners/bootstrap.log

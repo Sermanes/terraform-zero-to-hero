@@ -44,6 +44,7 @@ make plan TF_VERSION=1.16
 6. [`labs/06-terraform-commands`](labs/06-terraform-commands) — `local_file` and `random_pet` only, no cloud credentials needed. Used to exercise `validate`, `fmt`, `show`, `providers`, `output`, `refresh` and `graph`.
 7. [`labs/07-immutable-infra`](labs/07-immutable-infra) — same `local_file`/`random_pet` pair, used to exercise the `lifecycle` block: default destroy-and-create replacement, `create_before_destroy`, and `prevent_destroy`.
 8. [`labs/08-data-sources`](labs/08-data-sources) — a `data "local_file"` reading a file outside Terraform's control, a second data source whose path depends on `random_pet`'s id (deferred to apply), and a `null_resource` with `local-exec` used to show why an explicit `depends_on` is sometimes required on a data source.
+9. [`labs/09-count-for-each`](labs/09-count-for-each) — the same `local_file` created with `count` and with `for_each` over the same list, used to show how removing an element from the middle of the list shifts `count` indices but only removes the matching `for_each` key, plus a `count = var.enable_canary ? 1 : 0` toggle.
 
 ## Posts in the series
 
@@ -56,3 +57,4 @@ make plan TF_VERSION=1.16
 7. [Useful Terraform commands: validate, fmt, show, providers, output, refresh and graph](https://sregio.es/en/blog/terraform-commands/)
 8. [Mutable vs. immutable infrastructure, and lifecycle in Terraform](https://sregio.es/en/blog/infraestructura-mutable-vs-inmutable/)
 9. [Data sources in Terraform](https://sregio.es/en/blog/terraform-data-sources/)
+10. [count vs for_each in Terraform](https://sregio.es/en/blog/terraform-count-for-each/)
